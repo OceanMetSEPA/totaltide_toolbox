@@ -1,5 +1,4 @@
-function [ dataSeries ] = getHeights( port, startDate, numDays, interval)
-
+function dataSeries = getHeights(port, startDate, numDays, interval)
     % This function builds a times-series of water levels for the requested
     % station across the requested time-period. This can be used to
     % generate either historical or future water level variations.

@@ -1,4 +1,4 @@
-function [ dataSeries ] = getSlackHeights(port, startDate, numDays)
+function dataSeries = getSlackHeights(port, startDate, numDays)
     % This function builds a times-series of heigh and low water levels for 
     % the requested station across the requested time-period. This can be 
     % used to generate either historical or future water level variations.
