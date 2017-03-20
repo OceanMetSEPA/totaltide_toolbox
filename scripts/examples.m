@@ -60,7 +60,30 @@ levels = TotalTide.getHeights(port, now, 30, 20)
 %       time: [1x2160 double]
 %     height: [1x2160 double]
 
+%% Get only slack water levels from a window of time
 
+% e.g. next 30 days 
+levels = TotalTide.getSlackHeights(port, now, 30)
+
+% levels = 
+%          time: [1x116 double]
+%        height: [1x116 double]
+%     highWater: [1x116 double]
+
+%% Get only water levels from specific times
+
+% single point - right now!
+levels = TotalTide.getSpecificHeights(port, now)
+
+% levels =
+%           2.65346144793728
+
+% multiple times - now and same time tomorrow
+levels = TotalTide.getSpecificHeights(port, [now, now+1])
+
+% levels =
+%           2.65346144793728
+%           2.24552796043786
 
 %% Quickly plot generated water levels
 

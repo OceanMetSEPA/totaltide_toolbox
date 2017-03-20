@@ -64,7 +64,7 @@ function tideHeights=getSpecificHeights(port,t)
         else
             ttTimeStep=minutesPerDay; % midnight- so only need one value
         end
-        ttData=TotalTide.getHeights(port,datestr(iday,'dd/mm/yyyy)'),1,ttTimeStep);
+        ttData=TotalTide.getHeights(port,iday,1,ttTimeStep);
         % Map TotalTide times to times for this day:
         [k,ind]=ismember(ti,ttData.time);
         if ~all(k)

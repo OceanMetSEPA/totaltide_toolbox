@@ -70,7 +70,34 @@ e.g. next 30 days at 20 min resolution
     %       time: [1x2160 double]
     %     height: [1x2160 double]
 
+### Get only slack water levels from a window of time
 
+e.g. next 30 days 
+
+    levels = TotalTide.getSlackHeights(port, now, 30)
+
+    % levels = 
+    %          time: [1x116 double]
+    %        height: [1x116 double]
+    %     highWater: [1x116 double]
+
+
+### Get only water levels from specific times
+
+Single point - right now!
+
+    levels = TotalTide.getSpecificHeights(port, now)
+
+    % levels =
+    %           2.65346144793728
+
+Multiple times - now and same time tomorrow
+
+    levels = TotalTide.getSpecificHeights(port, [now, now+1])
+
+    % levels =
+    %           2.65346144793728
+    %           2.24552796043786
 
 ### Quickly plot generated water levels
 
@@ -82,12 +109,9 @@ Total Tide provides a greater range of functionality than described above. Full 
 
 The base Total Tide API can be easily accessed using the TotalTide.connection object provided in this library: 
 
-
     conn = TotalTide.connection;
 
-
 Using the returned object allows the raw API functions to be used. For example, finding a port by its Admiralty number identifier.
-
 
     port = conn.StationByNumber('0332') 
 
@@ -106,7 +130,9 @@ and an individual port can be isolated using the .Item() method
 
     port = ports.Item(1)
 
+and can then be passed into one of the custom water level functions:
 
+    levels = TotalTide.getHeights(port, now, 30, 20)
 
 
 
