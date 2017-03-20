@@ -119,7 +119,7 @@ which returns single location associated with unique ID number.
 
 Alternatively, ports can be found using their name
 
-    ports = tt.StationsByName('Millport',0)
+    ports = conn.StationsByName('Millport',0)
 
 which returns a collection of locations based on the search term (the second argument indicates search type: 0 = ports only, 1 = streams 
 % only and 2 = both)
