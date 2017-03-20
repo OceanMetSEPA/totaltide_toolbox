@@ -10,7 +10,7 @@ function [ port, distance ] = closestPort(x,y,varargin)
     % appropriate to the context under consideration.
     %
     % Usage:
-    % TotalTide.closestStation(x, y) 
+    % TotalTide.closestPort(x, y) 
     %   where x,y are long/lats
     %
     % TotalTide.closestStation(x, y, 'format', 'OSGB')
@@ -21,10 +21,10 @@ function [ port, distance ] = closestPort(x,y,varargin)
     %
     % EXAMPLES:
     %
-    %    sta = TotalTide.closestStation(56.223399966767325, -5795766414163874) % assumes decimal degree lat/lng pair
-    %    sta = TotalTide.closestStation(56.223399966767325, -5795766414163874, 'format', 'LL') % same results as above but explicitly
+    %    sta = TotalTide.closestPort(56.223399966767325, -5795766414163874) % assumes decimal degree lat/lng pair
+    %    sta = TotalTide.closestPort(56.223399966767325, -5795766414163874, 'format', 'LL') % same results as above but explicitly
     %    declares decimal degree, lat/lng format using 'LL'
-    %    sta = TotalTide.closestStation(164789, 709911, 'format', 'OSGB') % declare easting/northing
+    %    sta = TotalTide.closestPort(164789, 709911, 'format', 'OSGB') % declare easting/northing
     %    format using 'OSGB'
     %
     % DEPENDENCIES:
@@ -32,9 +32,7 @@ function [ port, distance ] = closestPort(x,y,varargin)
     % TotalTide.
     %
     % The function also calls 
-    %  - catCoordinates.m
-    %  - TotalTide.northUKPorts.m
-    %  - greatCircleDistance.m
+    %  - OS.convertAndTranform.m
     
     if nargin==0
       help TotalTide.closestPort
@@ -57,7 +55,7 @@ function [ port, distance ] = closestPort(x,y,varargin)
     % If easting/northing format declared in third argument, convert to
     % decimal degrees
     if strcmpi(format, 'EN') | strcmpi(format, 'OSGB')
-       [lng,lat] = OS.catCoordinates(x, y);
+       [lng,lat] = OS.convertAndTransform(x, y);
     else
        % Otherwise, just assign the passed in lat/lng to the appropriate vars
        lat = y;
