@@ -17,9 +17,8 @@ function dataSeries = getHeights(port, startDate, numDays, interval)
     %
     %     port is an instance of TotalTide::IPort. See http://www.chersoft.co.uk/totaltidesdk/reference/interface_total_tide_1_1_i_port.html
     %
-    %     startDate is a string representing the date from which the water level 
-    %     record is required (format should be 'dd/mm/yyyy' consistent with 
-    %     TotalTide *PredictionTime*)
+    %     startDate is a matlab datenum representing the date from which the water level 
+    %     record is required 
     %
     %     numDays is the number of days from the start date to be included
     %
@@ -32,9 +31,8 @@ function dataSeries = getHeights(port, startDate, numDays, interval)
     %
     % EXAMPLES:
     %
-    %    tt   = TotalTide.connection;
-    %    port = tt.StationByNumber('0345')
-    %    tide = TotalTide.getHeights(port,'16/05/2006',100,20)
+    %    port = TotalTide.closestPort(219055,656439, 'format', 'OSGB')
+    %    tide = TotalTide.getHeights(port,now,100,20)
     %
     % DEPENDENCIES:
     % This function requires a working, authorised installation of Admiralty
@@ -64,7 +62,7 @@ function dataSeries = getHeights(port, startDate, numDays, interval)
         
         % Increment the start time according to the iteration number and
         % batch size
-        tt.PredictionTime = datestr(addtodate(datenum(startDate, 'dd/mm/yyyy'), (i-1)*batchSize, 'day'), 'dd/mm/yyyy');
+        tt.PredictionTime = datestr(addtodate(startDate, (i-1)*batchSize, 'day'), 'dd/mm/yyyy');
         
         % Number of days to retreive is always the declared batch size...
         days = batchSize;

@@ -42,7 +42,7 @@ function plotHeights(data, portName)
     if nargin < 2
       title('Unnamed station');
     else
-      title(stationName);
+      title(portName);
     end
     
     grid on
