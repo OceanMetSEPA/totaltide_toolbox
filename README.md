@@ -49,18 +49,21 @@ It also uses the [os_toolbox](https://github.com/OceanMetSEPA/os_toolbox) in ode
 ### Examine port info
 
 Print out all properties
+
     get(port)
 
 Retreive individual properties
+
     port.name
     port.Latitude
     port.StationType
     port.HighestHighWater
 
 
-###Get water levels from a window of time
+### Get water levels from a window of time
 
 e.g. next 30 days at 20 min resolution
+
     levels = TotalTide.getHeights(port, now, 30, 20)
 
     % levels = 
@@ -75,7 +78,7 @@ e.g. next 30 days at 20 min resolution
 
 ### Using the TotalTide API
 
-Total Tide provides a greater range of functionality than described above. Full documentation for the Total Tide COM API is provided on the secured Total Tide developer [website](http://www.chersoft.co.uk/totaltidesdk/index.htm)
+Total Tide provides a greater range of functionality than described above. Full documentation for the Total Tide COM API is provided on the secured [Total Tide developer website](http://www.chersoft.co.uk/totaltidesdk/index.htm)
 
 The base Total Tide API can be easily accessed using the TotalTide.connection object provided in this library: 
 
