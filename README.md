@@ -101,7 +101,7 @@ Multiple times - now and same time tomorrow
 
 ### Quickly plot generated water levels
 
-    TotalTide.plotHeights(h, port.name) % name optional
+    TotalTide.plotHeights(levels, port.name) % name optional
 
 ### Using the TotalTide API
 
