@@ -74,7 +74,7 @@ function [ station ] = closestStation(a,b,format)
     % the target location
     for p = 1:search_domain.Count
 
-       distance = TotalTide.greatCircleDistance([lat,lng],[search_domain.Item(p).Latitude, search_domain.Item(p).Longitude]);
+       distance = greatCircleDistance([lat,lng],[search_domain.Item(p).Latitude, search_domain.Item(p).Longitude]);
 
        if distance < min_distance
            min_distance = distance;
