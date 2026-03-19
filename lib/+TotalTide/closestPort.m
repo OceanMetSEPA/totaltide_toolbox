@@ -32,7 +32,7 @@ function [ port, distance ] = closestPort(x,y,varargin)
     % TotalTide.
     %
     % The function also calls 
-    %  - OS.convertAndTranform.m
+    %  - OS.catCoordinates.m
     
     if nargin==0
       help TotalTide.closestPort
@@ -55,7 +55,7 @@ function [ port, distance ] = closestPort(x,y,varargin)
     % If easting/northing format declared in third argument, convert to
     % decimal degrees
     if strcmpi(format, 'EN') | strcmpi(format, 'OSGB')
-       [lng,lat] = OS.convertAndTransform(x, y);
+       [lng,lat] = OS.catCoordinates(x, y);
     else
        % Otherwise, just assign the passed in lat/lng to the appropriate vars
        lat = y;
